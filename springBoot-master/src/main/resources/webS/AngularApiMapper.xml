@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.web.service.dao.AngularApiMapper">
+    <resultMap id="BaseResultMap" type="com.web.service.bean.loginRes">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+        <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
+        <result column="role_type" property="type" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+
+
+    </resultMap>
+    <select id="login" resultMap="BaseResultMap"
+            parameterType="com.web.service.bean.loginReq">
+        select id,user_name,mobile ,avatar,role_type,password from login where  user_name = #{userName} AND password = #{password}
+    </select>
+
+    <select id="getUser" resultType="com.web.service.bean.loginReq"
+                      parameterType="INTEGER">
+        select id,user_name userName,mobile ,password from login where  id=#{id}
+    </select>
+
+    <resultMap id="listMap" type="com.web.service.bean.RecordListRes">
+        <id column="time" property="time" jdbcType="VARCHAR"/>
+        <result column="fun" property="fun" jdbcType="INTEGER"/>
+        <result column="recordId" property="recordId" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="recordList" resultMap="listMap"
+            parameterType="INTEGER">
+        select time,recordId,fun from record re join login lo on lo.id = re.recordId where lo.id =#{id}
+    </select>
+
+
+    <select id="apiList" resultType="com.web.service.bean.ApiListRes"
+            parameterType="INTEGER">
+        select re.avatar avatar ,re.logo logo,re.owner owner,re.subDescription subDescription,re.title title,re.updatedAt updatedAt,re.id id,re.user_id userId  from api_list re join login lo on lo.id = re.user_id where lo.id =#{id} ORDER BY re.id DESC
+    </select>
+
+    <select id="ownerCounts" resultType="Integer"
+            parameterType="INTEGER">
+    select count(1)
+    from api_list
+    where visitor_id=#{id}
+    </select>
+
+    <select id="userInfo" resultType="com.web.service.bean.loginRes"
+            parameterType="INTEGER">
+        select signature,title,group_name groupName,avatar,address_province province,address_city city,team_nums teamNum,tag_nums tagNum,user_name userName,mobile mobile
+        from login
+        where id=#{id}
+    </select>
+
+
+    <select id="notice" resultType="com.web.service.bean.TeamResBean"
+            parameterType="INTEGER">
+        select member,logo,id
+        from team_info where id = #{id}
+    </select>
+
+    <select id="tagN" resultType="com.web.service.bean.TeamResBean"
+            parameterType="INTEGER">
+        select tag_name label,id
+        from tag where id = #{id}
+    </select>
+
+    <select id="articles" resultType="com.web.service.bean.articlesResBean"
+            parameterType="INTEGER">
+        select articles_name title,articles_contents content,articles_writer_name owner,star,likes,message,updatedAt,articles_url href
+        from articles
+        where  articles_writer_id=#{id}
+    </select>
+
+
+    <insert id="addApiList" parameterType="com.web.service.bean.ApiListReq">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into api_list (avatar,logo,owner,subDescription,title,user_id,visitor_id,updatedAt
+        )
+        values (#{avatar,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR},
+        #{owner,jdbcType=VARCHAR},#{subDescription,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},#{userId,jdbcType=INTEGER},#{visitorId,jdbcType=INTEGER},#{createdAt,jdbcType=VARCHAR}
+        )
+    </insert>
+    <select id="changeInfo"
+            parameterType="com.web.service.bean.ApiListReq">
+        update login
+        <set >
+            <if test="userName != null" >
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="groupName != null" >
+                group_name = #{groupName,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null" >
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+
+
+</mapper>
+
+
+        <!--<trim prefix="(" suffix=")" suffixOverrides="," >-->
+        <!--<if test="deviceId != null" >-->
+        <!--device_id,-->
+        <!--</if>-->
+        <!--<if test="partsName != null" >-->
+        <!--parts_name,-->
+        <!--</if>-->
+        <!--<if test="partsCode != null" >-->
+        <!--parts_code,-->
+        <!--</if>-->
+        <!--<if test="partsAmount != null" >-->
+        <!--parts_amount,-->
+        <!--</if>-->
+        <!--<if test="partsPrice != null" >-->
+        <!--parts_price,-->
+        <!--</if>-->
+        <!--</trim>-->
+        <!--<trim prefix="values (" suffix=")" suffixOverrides="," >-->
+        <!--<if test="deviceId != null" >-->
+        <!--#{deviceId,jdbcType=INTEGER},-->
+        <!--</if>-->
+        <!--<if test="partsName != null" >-->
+        <!--#{partsName,jdbcType=VARCHAR},-->
+        <!--</if>-->
+        <!--<if test="partsCode != null" >-->
+        <!--#{partsCode,jdbcType=VARCHAR},-->
+        <!--</if>-->
+        <!--<if test="partsAmount != null" >-->
+        <!--#{partsAmount,jdbcType=INTEGER},-->
+        <!--</if>-->
+        <!--<if test="partsPrice != null" >-->
+        <!--#{partsPrice,jdbcType=DECIMAL},-->
+        <!--</if>-->
+        <!--</trim>-->
