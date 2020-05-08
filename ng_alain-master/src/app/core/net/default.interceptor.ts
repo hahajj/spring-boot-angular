@@ -108,14 +108,13 @@ export class DefaultInterceptor implements HttpInterceptor {
   }
   // 请求头 服务器前缀
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // 统一加上服务端前缀 
+    // 统一加上服务端前缀
     let url = req.url;
-    console.log(url)
-    console.log(url.startsWith('/'))
+    console.log(url,url.startsWith('/'))
     if (!url.startsWith('/')) {
       url = environment.SERVER_URL + url;
     } else {
-      url = "http://192.168.18.162:8022" + url
+      url = "http://175.24.83.62:8022" + url
     }
 
     const newReq = req.clone({ url });

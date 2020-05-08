@@ -205,3 +205,4 @@ export const CHARTS = {
     'list|100': [{ x: '@city', 'value|1-100': 150, 'category|0-2': 1 }],
   }),
 };
+

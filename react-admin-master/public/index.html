@@ -24,8 +24,11 @@
 </head>
 
 <body>
-	<link rel="stylesheet/less" type="text/css" href="./theme.less" />
+	<!--<link rel="stylesheet/less" type="text/css" href="./theme.less" />-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>
+	<style type="text/css">
+		@import url("https://hahajjj-1301603466.cos.ap-shanghai.myqcloud.com/bootReact/theme.less");/*这里是通过@import引用CSS的样式内容*/
+	</style>
 	<script>
 		const primaryColor = localStorage.getItem('@primary-color');
 		primaryColor && window.less.modifyVars({

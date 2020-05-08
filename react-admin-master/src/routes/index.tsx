@@ -29,7 +29,8 @@ export default class CRouter extends Component<CRouterProps> {
         const permits = this.getPermits();
         if (!checkLogin(permits)) {
             // 线上环境判断是否登录
-            return <Redirect to={'/login'} />;
+            console.log("我不想被踢下线")
+            // return <Redirect to={'/login'} />;
         }
         return permit ? this.requireAuth(permit, component) : component;
     };

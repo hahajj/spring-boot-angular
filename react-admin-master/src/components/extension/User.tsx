@@ -24,27 +24,26 @@ type ExampleAnimationsState = {
 };
 
 const { Text } = Typography;
-const storageUser = localStorage.getItem('user');
-const userId: any = storageUser && JSON.parse(storageUser).uid;
-const avatar: any = storageUser && JSON.parse(storageUser).avatar;
+var  storageUser :any, userId: any,avatar: any
 
 class User extends React.Component<UserParamsState, ExampleAnimationsState> {
     constructor(props: any) {
         super(props);
-        console.log('初始化');
+        console.log('初始化'+userId);
+        storageUser = localStorage.getItem('user');
+        userId= storageUser && JSON.parse(storageUser).uid;
+        avatar=storageUser && JSON.parse(storageUser).avatar;
         const { auth: nextAuth = {} } = this.props;
         this.state = {
             userInfo: {},
             notice: [],
             tags: [],
         };
-        ;
 
         userInfo({ id: userId }).then(res => {
             console.log('数据更新', this.props);
             this.setState({ userInfo: res.data.info, notice: res.data.notice, tags: res.data.tags });
         });
-
 
     }
 
@@ -64,7 +63,7 @@ class User extends React.Component<UserParamsState, ExampleAnimationsState> {
         })
     }
      promiseAll(promises:any){
-        debugger
+        // debugger
         return new Promise(function(resolve,reject){
             if(!Array.isArray(promises)){
                 return reject(new TypeError("argument must be anarray"))
@@ -121,7 +120,7 @@ class User extends React.Component<UserParamsState, ExampleAnimationsState> {
                                             >
                                                 {/*<Icon type='google' />*/}
                                                 {/*<span>google</span>*/}
-                                                <Text code>{item.label}</Text>
+                                                <Text code    key={index+'span'}>{item.label}</Text>
                                             </span>
                                         );
                                     })

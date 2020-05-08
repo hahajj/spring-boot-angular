@@ -58,7 +58,8 @@ export class DashboardV1Component implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get('/chart').subscribe((res: any) => {
+    this.http.get('/angular/chart').subscribe((res: any) => {
+      res=res.data&&JSON.parse(res.data)
       this.webSite = res.visitData.slice(0, 10);
       this.salesData = res.salesData;
       this.offlineChartData = res.offlineChartData;

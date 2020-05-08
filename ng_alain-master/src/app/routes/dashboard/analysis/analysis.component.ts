@@ -66,7 +66,8 @@ export class DashboardAnalysisComponent implements OnInit {
 
   ngOnInit() {
 
-    this.http.get('/chart').subscribe((res: any) => {
+    this.http.get('/angular/chart').subscribe((res: any) => {
+      res= res.data&&JSON.parse(res.data)
       res.offlineData.forEach((item: any, idx: number) => {
         item.show = idx === 0;
         item.chart = { ...[], ...res.offlineChartData };

@@ -18,10 +18,11 @@ export class ProAccountSettingsBaseComponent implements OnInit {
   constructor(private http: _HttpClient, private cdr: ChangeDetectorRef, private msg: NzMessageService, private router: Router) { }
 
   ngOnInit(): void {
-    zip(this.http.post('/angular/userInfo', { id: JSON.parse(localStorage.getItem("_token")).id }), this.http.get('/geo/province')).subscribe(([user, province]: any) => {
+    zip(this.http.post('/angular/userInfo', { id: JSON.parse(localStorage.getItem("_token")).id })).subscribe(([user]: any) => {
       this.userLoading = false;
       this.user = user.data.info;
-      this.provinces = province;
+      // this.provinces = province;
+      console.log("我爲什麽要進來？")
       // this.choProvince(user.geographic.province.key, false);
       this.cdr.detectChanges();
     });

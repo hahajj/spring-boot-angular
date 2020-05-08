@@ -6,7 +6,7 @@
 //easy-mock模拟数据接口地址
 // const EASY_MOCK = 'https://www.easy-mock.com/mock';
 
-const EASY_MOCK = 'http://192.168.18.162:8022/';
+const EASY_MOCK = 'http://175.24.83.62:8022/';
 export const MOCK_AUTH = EASY_MOCK  // 权限接口地址
 export const MOCK_AUTH_ADMIN = MOCK_AUTH + 'angular/login'; // 管理员权限接口
 export const MOCK_AUTH_VISITOR = 'https://www.easy-mock.com/mock' + '/597b5ed9a1d30433d8411456/auth' + '/visitor'; // 访问权限接口

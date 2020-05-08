@@ -51,7 +51,7 @@ class Login extends React.Component<LoginProps> {
                 } else {
                     const data={ userName: values.userName, password: values.password }
                     admin(data).then((res: any) => {
-                        if (res.code == 1) {
+                        if (res&&res.code == 1) {
                             nextAuth.data= {uid: res.data.content.id, permissions: ['auth/authPage/visit','auth/authPage/edit','auth/testPage'], role: "系统管理员", roleType: 1, userName: res.data.content.userName,avatar:res.data.content.avatar}
                             localStorage.setItem('user', JSON.stringify(nextAuth.data));
                             localStorage.setItem('token', res.data.token);
@@ -85,7 +85,7 @@ class Login extends React.Component<LoginProps> {
                             })(
                                 <Input
                                     prefix={<Icon type="user" style={{ fontSize: 13 }}/>}
-                                    placeholder="管理员输入admin, 游客输入guest"
+                                    placeholder=""
                                 />,
                             )}
                         </FormItem>
@@ -96,7 +96,7 @@ class Login extends React.Component<LoginProps> {
                                 <Input
                                     prefix={<Icon type="lock" style={{ fontSize: 13 }}/>}
                                     type="password"
-                                    placeholder="管理员输入admin, 游客输入guest"
+                                    placeholder=""
                                 />,
                             )}
                         </FormItem>

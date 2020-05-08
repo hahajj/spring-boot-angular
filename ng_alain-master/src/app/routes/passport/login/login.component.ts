@@ -172,15 +172,17 @@ export class UserLoginComponent implements OnDestroy {
   }
   // #region social
 
-  open(type: string, openType: SocialOpenType = 'href') {
+  open(type: string, openType: SocialOpenType = 'window') {
     let url = ``;
     let callback = ``;
     // tslint:disable-next-line: prefer-conditional-expression
     if (environment.production) {
-      callback = 'https://ng-alain.github.io/ng-alain/#/callback/' + type;
+      callback = 'http://175.24.83.62:82/#/callback/' + type;
     } else {
-      callback = 'http://localhost:4200/#/callback/' + type;
+      callback = 'http://175.24.83.62:82/#/callback/' + type;
     }
+    console.log(url)
+    debugger
     switch (type) {
       case 'auth0':
         url = `//cipchk.auth0.com/login?client=8gcNydIDzGBYxzqV0Vm1CX_RXH-wsWo5&redirect_uri=${decodeURIComponent(

@@ -22,6 +22,39 @@ const menus: {
     menus: [
         // 菜单相关路由
         { key: '/app/dashboard/index', title: '首页', icon: 'mobile', component: 'Dashboard' },
+        {
+            key: '/app/extension',
+            title: '功能扩展',
+            icon: 'bars',
+            subs: [
+                // {
+                //     key: '/app/extension/queryParams',
+                //     title: '问号形式参数',
+                //     component: 'QueryParams',
+                //     query: '?param1=1&param2=2',
+                // },
+                {
+                    key: '/app/extension/visitor',
+                    title: '访客模式',
+                    component: 'Visitor',
+                    login: true,
+                },
+                {
+                    key: '/app/extension/User',
+                    title: '个人信息',
+                    component: 'User',
+                    login: true,
+                },
+                {
+                    key: '/app/extension/PersonalSetting',
+                    title: '个人设置',
+                    component: 'PersonalSetting',
+                    login: true,
+                },
+
+
+            ],
+        },
         // {
         //     key: '/app/ui',
         //     title: 'UI',
@@ -113,39 +146,7 @@ const menus: {
         //     icon: 'star',
         //     component: 'Cssmodule',
         // },
-        {
-            key: '/app/extension',
-            title: '功能扩展',
-            icon: 'bars',
-            subs: [
-                // {
-                //     key: '/app/extension/queryParams',
-                //     title: '问号形式参数',
-                //     component: 'QueryParams',
-                //     query: '?param1=1&param2=2',
-                // },
-                {
-                    key: '/app/extension/visitor',
-                    title: '访客模式',
-                    component: 'Visitor',
-                    login: true,
-                },
-                {
-                    key: '/app/extension/User',
-                    title: '个人信息',
-                    component: 'User',
-                    login: true,
-                },
-                {
-                    key: '/app/extension/PersonalSetting',
-                    title: '个人设置',
-                    component: 'PersonalSetting',
-                    login: true,
-                },
 
-
-            ],
-        },
     ],
     others: [], // 非菜单相关路由
 };
