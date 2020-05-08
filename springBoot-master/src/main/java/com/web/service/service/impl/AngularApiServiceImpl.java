@@ -114,5 +114,10 @@ public class AngularApiServiceImpl implements AngularApiService {
         return token;
     }
 
+    public String chart(Integer req) {
+        String res=angularApiMapper.chart(req);
+        return res;
+    }
+
 
 }

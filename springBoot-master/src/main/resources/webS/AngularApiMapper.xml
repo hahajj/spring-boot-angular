@@ -100,6 +100,12 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
 
+    <select id="chart" resultType="String" parameterType="INTEGER">
+        select detailc
+        from chart_detail
+        where chart_key = #{key}
+    </select>
+
 
 
 </mapper>

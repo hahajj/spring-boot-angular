@@ -26,6 +26,7 @@ public interface AngularApiService {
 
 
     void changeInfo(String req);
+    String chart(Integer req);
 
 
     String  getToken (loginRes user);

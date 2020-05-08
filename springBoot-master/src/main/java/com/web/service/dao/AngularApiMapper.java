@@ -37,6 +37,7 @@ public interface AngularApiMapper {
 
 
     void changeInfo(ApiListReq req);
+    String chart(Integer req);
 
 
 }
