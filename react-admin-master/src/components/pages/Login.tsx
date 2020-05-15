@@ -57,6 +57,7 @@ class Login extends React.Component<LoginProps> {
                             localStorage.setItem('token', res.data.token);
                            history.push('/');
                         } else {
+                            console.log(res.msg)
                         }
                     });
                 }

@@ -7,6 +7,7 @@ import { Layout, notification, Icon } from 'antd';
 import { ThemePicker } from './components/widget';
 import { connectAlita } from 'redux-alita';
 import { checkLogin } from './utils';
+import store  from "./store/store";
 
 const { Content, Footer } = Layout;
 
@@ -22,6 +23,22 @@ class App extends Component<AppProps> {
         title: '',
     };
     componentWillMount() {
+        let next =store.dispatch
+
+        store.dispatch=(action:any)=>{
+            console.log(action,"我进来了")
+            next(action)
+            console.log(action,"我进来了123")
+        }
+        store.subscribe(()=>{
+            console.log(store.getState(),123456)
+        })
+        store.dispatch({
+            type: 'SAVEIMG',
+            path: '123456',
+        });
+
+
         const { setAlitaState } = this.props;
         let user,
             storageUser = localStorage.getItem('user');

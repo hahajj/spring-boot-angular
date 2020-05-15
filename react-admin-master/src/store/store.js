@@ -1,11 +1,12 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import * as home from './home/reducer';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
-console.log(home,production)
+
 let store = createStore(
-  combineReducers({...home}),
-  applyMiddleware(thunk)
+  combineReducers({...home}),//多个Reducer
+  applyMiddleware(thunk,logger)//添加中间件
 );
 
 export default store;
