@@ -6,12 +6,13 @@ import { Row, Col, Card } from 'antd';
 import beauty from '@/style/imgs/beauty.jpg';
 import BreadcrumbCustom from '../BreadcrumbCustom';
 import { AuthWidget } from '../widget';
-
 class Basic extends Component {
+
     render() {
         return (
             <div>
                 <BreadcrumbCustom first="权限管理" second="基础演示" />
+                //@ts-ignore
                 <AuthWidget
                     children={(auth: any) => (
                         <Row>

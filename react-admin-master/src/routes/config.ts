@@ -28,17 +28,11 @@ const menus: {
             icon: 'bars',
             subs: [
                 // {
-                //     key: '/app/extension/queryParams',
-                //     title: '问号形式参数',
-                //     component: 'QueryParams',
-                //     query: '?param1=1&param2=2',
+                //     key: '/app/extension/visitor',
+                //     title: '访客模式',
+                //     component: 'Visitor',
+                //     login: true,
                 // },
-                {
-                    key: '/app/extension/visitor',
-                    title: '访客模式',
-                    component: 'Visitor',
-                    login: true,
-                },
                 {
                     key: '/app/extension/User',
                     title: '个人信息',
@@ -51,7 +45,12 @@ const menus: {
                     component: 'PersonalSetting',
                     login: true,
                 },
-
+                // {
+                //     key: '/app/extension/queryParams',
+                //     title: '问号形式参数',
+                //     component: 'QueryParams',
+                //     query: '?param1=1&param2=2',
+                // },
 
             ],
         },
@@ -73,31 +72,31 @@ const menus: {
         //         { key: '/app/ui/map', title: '地图', component: 'MapUi' },
         //     ],
         // },
-        {
-            key: '/app/animation',
-            title: '动画',
-            icon: 'rocket',
-            subs: [
-                {
-                    key: '/app/animation/basicAnimations',
-                    title: '基础动画',
-                    component: 'BasicAnimations',
-                },
-                        { key: '/app/ui/icons', title: '图标', component: 'Icons' },
-                {
-                    key: '/app/animation/exampleAnimations',
-                    title: '动画案例',
-                    component: 'ExampleAnimations',
-                },
-            ],
-        },
+        // {
+        //     key: '/app/animation',
+        //     title: '动画',
+        //     icon: 'rocket',
+        //     subs: [
+        //         {
+        //             key: '/app/animation/basicAnimations',
+        //             title: '基础动画',
+        //             component: 'BasicAnimations',
+        //         },
+        //                 { key: '/app/ui/icons', title: '图标', component: 'Icons' },
+        //         {
+        //             key: '/app/animation/exampleAnimations',
+        //             title: '动画案例',
+        //             component: 'ExampleAnimations',
+        //         },
+        //     ],
+        // },
         {
             key: '/app/table',
             title: '表格',
             icon: 'copy',
             subs: [
                 { key: '/app/table/basicTable', title: '基础表格', component: 'BasicTable' },
-                { key: '/app/table/advancedTable', title: '高级表格', component: 'AdvancedTable' },
+                // { key: '/app/table/advancedTable', title: '高级表格', component: 'AdvancedTable' },
             //     {
             //         key: '/app/table/asynchronousTable',
             //         title: '异步表格',
@@ -105,41 +104,41 @@ const menus: {
             //     },
             ],
         },
-        {
-            key: '/app/form',
-            title: '表单',
-            icon: 'edit',
-            subs: [{ key: '/app/form/basicForm', title: '基础表单', component: 'BasicForm' }],
-        },
-        {
-            key: '/app/chart',
-            title: '图表',
-            icon: 'area-chart',
-            subs: [
-                { key: '/app/chart/echarts', title: 'echarts', component: 'Echarts' },
-                // { key: '/app/chart/recharts', title: 'recharts', component: 'Recharts' },
-            ],
-        },
+        // {
+        //     key: '/app/form',
+        //     title: '表单',
+        //     icon: 'edit',
+        //     subs: [{ key: '/app/form/basicForm', title: '基础表单', component: 'BasicForm' }],
+        // },
+        // {
+        //     key: '/app/chart',
+        //     title: '图表',
+        //     icon: 'area-chart',
+        //     subs: [
+        //         { key: '/app/chart/echarts', title: 'echarts', component: 'Echarts' },
+        //         // { key: '/app/chart/recharts', title: 'recharts', component: 'Recharts' },
+        //     ],
+        // },
         // {
         //     key: '/subs4',
         //     title: '页面',
         //     icon: 'switcher',
         //     subs: [{ key: '/login', title: '登录' }, { key: '/404', title: '404' }],
         // },
-        {
-            key: '/app/auth',
-            title: '权限管理',
-            icon: 'safety',
-            subs: [
-                { key: '/app/auth/basic', title: '基础演示', component: 'AuthBasic' },
-                {
-                    key: '/app/auth/routerEnter',
-                    title: '路由拦截',
-                    component: 'RouterEnter',
-                    auth: 'auth/testPage',
-                },
-            ],
-        },
+        // {
+        //     key: '/app/auth',
+        //     title: '权限管理',
+        //     icon: 'safety',
+        //     subs: [
+        //         { key: '/app/auth/basic', title: '基础演示', component: 'AuthBasic' },
+        //         {
+        //             key: '/app/auth/routerEnter',
+        //             title: '路由拦截',
+        //             component: 'RouterEnter',
+        //             auth: 'auth/testPage',
+        //         },
+        //     ],
+        // },
         // {
         //     key: '/app/cssModule',
         //     title: 'cssModule',

@@ -4,7 +4,8 @@
 import React from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { PwaInstaller } from '../widget';
-import { connectAlita } from 'redux-alita';
+// import { connectAlita } from 'redux-alita';
+import { connectAlita } from '../../store/store';
 import { RouteComponentProps } from 'react-router';
 import { FormProps } from 'antd/lib/form';
 import { admin } from '../../axios';
@@ -27,7 +28,6 @@ class Login extends React.Component<LoginProps> {
 
         // React 16.3+弃用componentWillReceiveProps
         const { auth: nextAuth = {}, history } = this.props;
-        console.log(JSON.stringify(nextAuth),1111)
         // const { history } = this.props;
         if (nextAuth.data && nextAuth.data.uid) {
             // 判断是否登陆
@@ -52,6 +52,7 @@ class Login extends React.Component<LoginProps> {
                     const data={ userName: values.userName, password: values.password }
                     admin(data).then((res: any) => {
                         if (res&&res.code == 1) {
+                            console.log(res.data)
                             nextAuth.data= {uid: res.data.content.id, permissions: ['auth/authPage/visit','auth/authPage/edit','auth/testPage'], role: "系统管理员", roleType: 1, userName: res.data.content.userName,avatar:res.data.content.avatar}
                             localStorage.setItem('user', JSON.stringify(nextAuth.data));
                             localStorage.setItem('token', res.data.token);

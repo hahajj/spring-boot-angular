@@ -17,6 +17,7 @@ class RouterEnter extends Component {
         return (
             <div>
                 <BreadcrumbCustom first="权限管理" second="路由拦截" />
+                //@ts-ignore
                 <AuthWidget
                     children={(auth: any) => (
                         <Row>

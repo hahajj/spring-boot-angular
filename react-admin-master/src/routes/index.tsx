@@ -16,11 +16,13 @@ type CRouterProps = {
 export default class CRouter extends Component<CRouterProps> {
     getPermits = (): any[] | null => {
         const { auth } = this.props;
+
         return auth ? auth.data.permissions : null;
     };
 
     requireAuth = (permit: any, component: React.ReactElement) => {
         const permits = this.getPermits();
+
         // const { auth } = store.getState().httpData;
         if (!permits || !permits.includes(permit)) return <Redirect to={'404'} />;
         return component;
@@ -35,7 +37,6 @@ export default class CRouter extends Component<CRouterProps> {
         return permit ? this.requireAuth(permit, component) : component;
     };
     render() {
-        console.log(routesConfig)
         return (
             <Switch>
                 {Object.keys(routesConfig).map(key =>

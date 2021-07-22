@@ -48,3 +48,7 @@ export const guest = () => get({ url: config.MOCK_AUTH_VISITOR });
 export const articles = (data:any) => post({ url:config.MOCK_AUTH+'angular/articles' ,data:data}).then();
 //angular/userInfo
 export const userInfo = (data:any) => post({ url:config.MOCK_AUTH+ 'angular/userInfo' ,data:data}).then();
+//angular/apiList
+export const apiList = (data:any) => post({ url:config.MOCK_AUTH+ 'angular/apiList' ,data:data}).then();
+//angular/addApiList
+export const addApiList = (data:any) => post({ url:config.MOCK_AUTH+ 'angular/addApiList' ,data:data}).then();

@@ -5,10 +5,11 @@ import SiderCustom from './components/SiderCustom';
 import HeaderCustom from './components/HeaderCustom';
 import { Layout, notification, Icon } from 'antd';
 import { ThemePicker } from './components/widget';
-import { connectAlita } from 'redux-alita';
-import { checkLogin } from './utils';
-import store  from "./store/store";
+// import { connectAlita } from 'redux-alita';
 
+import { checkLogin } from './utils';
+import store   from "./store/store";
+import {connectAlita}  from "./store/store";
 const { Content, Footer } = Layout;
 
 type AppProps = {
@@ -18,20 +19,24 @@ type AppProps = {
 };
 
 class App extends Component<AppProps> {
+
     state = {
         collapsed: false,
         title: '',
     };
     componentWillMount() {
+
         let next =store.dispatch
 
+        console.log(store.dispatch);
+//@ts-ignore
         store.dispatch=(action:any)=>{
             console.log(action,"我进来了")
             next(action)
-            console.log(action,"我进来了123")
+            console.log(action,"我出去了！！")
         }
         store.subscribe(()=>{
-            console.log(store.getState(),123456)
+            console.log(store.getState(),'获取存储值')
         })
         store.dispatch({
             type: 'SAVEIMG',
@@ -134,3 +139,4 @@ class App extends Component<AppProps> {
 }
 
 export default connectAlita(['auth', 'responsive'])(App);
+// export default

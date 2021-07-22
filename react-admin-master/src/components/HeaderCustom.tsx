@@ -10,7 +10,8 @@ import { gitOauthToken, gitOauthInfo } from '../axios';
 import { queryString } from '../utils';
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { PwaInstaller } from './widget';
-import { connectAlita } from 'redux-alita';
+import { connectAlita } from '../store/store';
+// import { connectAlita } from 'redux-alita';
 const { Header } = Layout;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -21,6 +22,7 @@ type HeaderCustomProps = RouteComponentProps<any> & {
     user: any;
     responsive?: any;
     path?: string;
+    auth?:any
 };
 type HeaderCustomState = {
     user: any;
@@ -76,6 +78,8 @@ class HeaderCustom extends Component<HeaderCustomProps, HeaderCustomState> {
     };
     render() {
         const { responsive = { data: {} } } = this.props;
+        const { auth = {} } = this.props;
+        // console.log(responsive,auth)
          let storageUser = localStorage.getItem('user');
         const avatarLogo:any=storageUser&&JSON.parse(storageUser).avatar||avater
         return (
@@ -151,9 +155,11 @@ class HeaderCustom extends Component<HeaderCustomProps, HeaderCustomState> {
 }
 
 // 重新设置连接之后组件的关联类型
+//@ts-ignore
 const HeaderCustomConnect: React.ComponentClass<
     HeaderCustomProps,
     HeaderCustomState
 > = connectAlita(['responsive'])(HeaderCustom);
-
+// const HeaderCustomConnect = connectAlita(['responsive'])(HeaderCustom);
+// console.log(HeaderCustomConnect)
 export default withRouter(HeaderCustomConnect);
