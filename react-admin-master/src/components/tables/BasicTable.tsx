@@ -106,7 +106,6 @@ class BasicTable extends React.Component<ExampleAnimationsProps, ExampleAnimatio
                 visible={visible}
                 width={"450px"}
             >
-                {/*//@ts-ignore*/}
                 <SubmitForm changeData={this.onClose}></SubmitForm>
             </Drawer>
 
